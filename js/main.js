@@ -24,6 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ----- Étape 9 : validation et envoi du formulaire de contact -----
   // initContactForm();
+// ----- Footer : année dynamique -----
+document.getElementById('current-year').textContent = new Date().getFullYear();
 });
 
 /* =============================================================
