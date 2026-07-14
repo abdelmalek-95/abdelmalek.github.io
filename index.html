@@ -18,7 +18,6 @@
   <meta property="og:locale" content="fr_FR" />
 
   <!-- ===== Favicon ===== -->
-  <!-- Remplacer favicon.png par votre propre icône (voir étape 10 pour la génération) -->
   <link rel="icon" type="image/png" href="images/favicon.png" />
 
   <!-- ===== Polices Google Fonts (Space Grotesk = titres, Inter = texte, JetBrains Mono = labels techniques) ===== -->
@@ -33,10 +32,28 @@
 
   <!-- =========================================================
        NAVIGATION (barre verticale fixe à gauche sur desktop,
-       menu hamburger sur mobile — construite à l'étape 2)
+       menu hamburger sur mobile)
   ========================================================== -->
   <nav id="main-nav" aria-label="Navigation principale">
-    <!-- Contenu de la navigation ajouté à l'étape 2 -->
+    <a href="#home" class="nav-logo" aria-label="Retour à l'accueil">AL.</a>
+    
+    <div class="nav-spine" aria-hidden="true">
+      <div class="nav-spine-fill" id="nav-spine-fill"></div>
+    </div>
+
+    <ul class="nav-list" id="nav-list" role="list">
+      <li><a href="#home" class="nav-link active" data-section="home"><span class="nav-dot"></span><span class="nav-text">Accueil</span></a></li>
+      <li><a href="#about" class="nav-link" data-section="about"><span class="nav-dot"></span><span class="nav-text">À propos</span></a></li>
+      <li><a href="#skills" class="nav-link" data-section="skills"><span class="nav-dot"></span><span class="nav-text">Compétences</span></a></li>
+      <li><a href="#experience" class="nav-link" data-section="experience"><span class="nav-dot"></span><span class="nav-text">Expérience</span></a></li>
+      <li><a href="#education" class="nav-link" data-section="education"><span class="nav-dot"></span><span class="nav-text">Formation</span></a></li>
+      <li><a href="#projects" class="nav-link" data-section="projects"><span class="nav-dot"></span><span class="nav-text">Projets</span></a></li>
+      <li><a href="#contact" class="nav-link" data-section="contact"><span class="nav-dot"></span><span class="nav-text">Contact</span></a></li>
+    </ul>
+
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
   <main>
@@ -44,57 +61,524 @@
     <!-- =========================================================
          SECTION 1 — HOME / HERO
     ========================================================== -->
-    <section id="home" class="section">
-      <!-- Contenu ajouté à l'étape 2 -->
+    <section id="home" class="section hero">
+      <!-- Fond animé "Blueprint" -->
+      <div class="hero-bg" aria-hidden="true">
+        <svg class="blueprint-svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+          <!-- Lignes techniques -->
+          <line x1="100" y1="150" x2="300" y2="50" class="bp-line" />
+          <line x1="300" y1="50" x2="650" y2="50" class="bp-line" />
+          <line x1="650" y1="50" x2="700" y2="300" class="bp-line" />
+          <line x1="100" y1="150" x2="100" y2="500" class="bp-line" />
+          <line x1="100" y1="500" x2="400" y2="550" class="bp-line" />
+          <line x1="700" y1="300" x2="700" y2="500" class="bp-line" />
+          <line x1="700" y1="500" x2="500" y2="550" class="bp-line" />
+          <!-- Nœuds SAP (Cuivre) -->
+          <g class="bp-node bp-node-sap">
+            <circle cx="100" cy="150" r="18" />
+            <text x="100" y="155" text-anchor="middle">SAP PS</text>
+          </g>
+          <g class="bp-node bp-node-sap">
+            <circle cx="700" cy="300" r="18" />
+            <text x="700" y="305" text-anchor="middle">PPM</text>
+          </g>
+          <!-- Nœuds Développement (Cyan) -->
+          <g class="bp-node bp-node-dev">
+            <circle cx="650" cy="50" r="18" />
+            <text x="650" y="55" text-anchor="middle">.NET</text>
+          </g>
+          <g class="bp-node bp-node-dev">
+            <circle cx="100" cy="500" r="18" />
+            <text x="100" y="505" text-anchor="middle">C#</text>
+          </g>
+          <!-- Nœud central -->
+          <circle cx="400" cy="300" r="24" class="bp-node-center" />
+        </svg>
+      </div>
+
+      <!-- Contenu texte -->
+      <div class="hero-content">
+        <p class="hero-eyebrow">// Portfolio</p>
+        <h1 class="hero-name">
+          Abdelmalek <span class="accent">Lazli</span>
+        </h1>
+        <p class="hero-role">
+          <span id="typing-role"></span><span class="typing-cursor" aria-hidden="true">|</span>
+        </p>
+        <p class="hero-slogan">
+          Développeur Full Stack .NET &amp; Consultant SAP S/4HANA (PS/PPM) — 
+          Je construis des solutions d'entreprise robustes, du code à l'intégration fonctionnelle.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">
+            Voir mes projets <span class="chevron">→</span>
+          </a>
+          <div class="cv-dropdown">
+            <button class="btn btn-outline" id="cv-dropdown-btn" aria-expanded="false" aria-haspopup="true">
+              📄 Télécharger CV <span class="chevron">▾</span>
+            </button>
+            <div class="cv-dropdown-menu" id="cv-dropdown-menu">
+              <a href="docs/cv-lazli-abdelmalek-sap-ps-ppm.pdf" download>
+                <span>⚙️</span> Profil SAP (PS/PPM) <span class="cv-tag">ERP</span>
+              </a>
+              <a href="docs/cv-lazli-abdelmalek-dotnet-fullstack.pdf" download>
+                <span>💻</span> Profil .NET Developer <span class="cv-tag cv-tag-dev">CODE</span>
+              </a>
+            </div>
+          </div>
+          <a href="#contact" class="btn btn-outline">Me contacter</a>
+        </div>
+      </div>
+
+      <!-- Photo de profil -->
+      <div class="hero-photo">
+        <div class="hero-photo-frame">
+          <div class="hero-photo-placeholder" aria-label="Photo de profil">
+            AL
+          </div>
+        </div>
+      </div>
+
+      <!-- Indicateur de scroll -->
+      <div class="scroll-indicator" aria-hidden="true">
+        <span></span>
+      </div>
     </section>
 
     <!-- =========================================================
          SECTION 2 — ABOUT ME
     ========================================================== -->
-    <section id="about" class="section">
-      <!-- Contenu ajouté à l'étape 3 -->
+    <section id="about" class="section about-section">
+      <div class="section-header">
+        <span class="section-number">01.</span>
+        <h2 class="section-title">À propos</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            Je suis <strong>Abdelmalek Lazli</strong>, Développeur Full Stack .NET et Consultant SAP S/4HANA basé à Alger. Mon parcours se situe au carrefour du <strong>développement logiciel</strong> et du <strong>conseil fonctionnel sur ERP</strong>, avec une appétence marquée pour les environnements industriels et le secteur de l'énergie.
+          </p>
+          <p>
+            Fort d'une solide expertise en <span class="highlight">C#, ASP.NET MVC, WebForms et SQL Server</span>, j'ai contribué à améliorer de <strong>30 à 70 %</strong> la performance et la fiabilité d'applications métier critiques chez <strong>ENAC (Groupe Sonatrach)</strong>. En parallèle, mes certifications SAP S/4HANA et mon expérience terrain en module <strong>PS (Project System)</strong> me permettent d'appréhender les projets dans leur globalité : du besoin fonctionnel à la solution technique.
+          </p>
+          <p>
+            Diplômé d'un Master en Recherche Opérationnelle (USTHB), j'adopte une approche analytique et orientée données pour résoudre des problèmes complexes. Ma stack technique inclut également <strong>Power BI</strong> pour la prise de décision, <strong>Git/GitLab</strong> pour le versioning, et les processus <strong>ETL</strong> pour l'intégration de données.
+          </p>
+          <div class="about-stats">
+            <div class="stat-item">
+              <span class="stat-number">50%</span>
+              <span class="stat-label">Gain d'efficacité opérationnelle</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">2+</span>
+              <span class="stat-label">Années d'expérience tech</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">4</span>
+              <span class="stat-label">Certifications SAP</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-visual">
+          <div class="about-card">
+            <div class="card-icon">🎯</div>
+            <p class="card-text">Recherche opérationnelle & optimisation</p>
+          </div>
+          <div class="about-card">
+            <div class="card-icon">💻</div>
+            <p class="card-text">Développement .NET / SQL Server</p>
+          </div>
+          <div class="about-card">
+            <div class="card-icon">⚙️</div>
+            <p class="card-text">SAP S/4HANA – Modules PS, PPM, MM, FI/CO</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- =========================================================
          SECTION 3 — SKILLS
     ========================================================== -->
-    <section id="skills" class="section">
-      <!-- Contenu ajouté à l'étape 4 -->
+    <section id="skills" class="section skills-section">
+      <div class="section-header">
+        <span class="section-number">02.</span>
+        <h2 class="section-title">Compétences</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="skills-grid">
+        <!-- Langages & Frameworks -->
+        <div class="skill-category">
+          <h3 class="skill-cat-title"><span class="cat-icon">🖥️</span> Langages & Frameworks</h3>
+          <ul class="skill-list">
+            <li>C#, ASP.NET MVC, WebForms</li>
+            <li>.NET Framework, .NET Core</li>
+            <li>HTML5, CSS3, JavaScript</li>
+            <li>Python (Recherche Opérationnelle)</li>
+          </ul>
+        </div>
+        <!-- Bases de données -->
+        <div class="skill-category">
+          <h3 class="skill-cat-title"><span class="cat-icon">🗄️</span> Bases de données & ETL</h3>
+          <ul class="skill-list">
+            <li>SQL Server, T-SQL, Stored Procedures</li>
+            <li>Data Warehouse, Data Mart</li>
+            <li>ETL : Talend, SSIS</li>
+          </ul>
+        </div>
+        <!-- BI & Reporting -->
+        <div class="skill-category">
+          <h3 class="skill-cat-title"><span class="cat-icon">📊</span> BI & Reporting</h3>
+          <ul class="skill-list">
+            <li>Power BI (Dashboards, KPI)</li>
+            <li>SAP Analytics Cloud</li>
+            <li>Analyse de données métier</li>
+          </ul>
+        </div>
+        <!-- ERP & Systèmes -->
+        <div class="skill-category">
+          <h3 class="skill-cat-title"><span class="cat-icon">⚙️</span> ERP & Systèmes (SAP)</h3>
+          <ul class="skill-list">
+            <li>SAP S/4HANA (Cloud Private Edition)</li>
+            <li>Modules : PS, PPM, MM, FI/CO, SD, PM</li>
+            <li>Intégration fonctionnelle cross-module</li>
+          </ul>
+        </div>
+        <!-- Versioning & Outils -->
+        <div class="skill-category">
+          <h3 class="skill-cat-title"><span class="cat-icon">🔧</span> Outils & Pratiques</h3>
+          <ul class="skill-list">
+            <li>Git, GitLab (branching, merge requests)</li>
+            <li>SDLC, Modernisation de legacy</li>
+            <li>Débogage, optimisation des performances</li>
+          </ul>
+        </div>
+        <!-- Soft Skills -->
+        <div class="skill-category">
+          <h3 class="skill-cat-title"><span class="cat-icon">🤝</span> Savoir-être</h3>
+          <ul class="skill-list">
+            <li>Communication & Travail d'équipe</li>
+            <li>Résolution de problèmes complexes</li>
+            <li>Adaptabilité & Éthique professionnelle</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
     <!-- =========================================================
          SECTION 4 — EXPERIENCE
     ========================================================== -->
-    <section id="experience" class="section">
-      <!-- Contenu ajouté à l'étape 5 -->
+    <section id="experience" class="section experience-section">
+      <div class="section-header">
+        <span class="section-number">03.</span>
+        <h2 class="section-title">Expérience</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="timeline">
+        <!-- Expérience 1 -->
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <h3 class="timeline-title">.NET / ASP.NET Software Developer</h3>
+              <span class="timeline-date">Sep 2025 – Présent</span>
+            </div>
+            <p class="timeline-company">ENAC - Sonatrach Subsidiary (Oil and Gas), Algiers, Algeria</p>
+            <ul class="timeline-details">
+              <li>Amélioration de l'efficacité administrative de <strong>30%</strong> via des applications ASP.NET MVC et WebForms.</li>
+              <li>Réduction du temps d'arrêt système jusqu'à <strong>70%</strong> par la maintenance et le refactoring d'applications legacy.</li>
+              <li>Amélioration de la précision des données en implémentant la logique métier en C# et en optimisant les procédures stockées SQL Server.</li>
+              <li>Développement de dashboards opérationnels avec <strong>Power BI</strong> et SQL Server pour l'aide à la décision.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Expérience 2 -->
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <h3 class="timeline-title">Junior SAP PS Consultant</h3>
+              <span class="timeline-date">Juil 2025 – Sep 2025</span>
+            </div>
+            <p class="timeline-company">CNPC Beijing Richfit - Sonatrach Project, Algiers, Algeria</p>
+            <ul class="timeline-details">
+              <li>Réduction des erreurs de configuration de <strong>40%</strong> via le paramétrage, les tests et la validation du module SAP PS.</li>
+              <li>Renforcement de l'intégration cross-module entre <strong>SAP PS, MM, PM et FI/CO</strong>.</li>
+              <li>Amélioration du contrôle des coûts projet par des workflows structurés de suivi et reporting.</li>
+              <li>Production de documentation technique et support de formation SAP S/4HANA.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Expérience 3 -->
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <h3 class="timeline-title">SAP Young Professional Program - Certified Consultant</h3>
+              <span class="timeline-date">Mar 2025 – Mai 2025</span>
+            </div>
+            <p class="timeline-company">SAP, Setif, Algeria</p>
+            <ul class="timeline-details">
+              <li>Formation intensive SAP S/4HANA couvrant les modules <strong>MM, SD, FI/CO, PS, EPM, PP, EWM</strong>.</li>
+              <li>Obtention de la certification <strong>SAP Certified Associate - Business Process Integration</strong>.</li>
+              <li>Obtention de la certification <strong>SAP Certified Specialist - SAP S/4HANA Cloud Private Edition</strong>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Expérience 4 -->
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <h3 class="timeline-title">Operations Research Intern</h3>
+              <span class="timeline-date">Jan 2024 – Juin 2024</span>
+            </div>
+            <p class="timeline-company">Sonatrach, Algiers, Algeria</p>
+            <ul class="timeline-details">
+              <li>Construction d'un modèle d'optimisation multi-critères pour le portefeuille de projets Exploration & Production avec <strong>Python et IBM CPLEX</strong>.</li>
+              <li>Analyse de scénarios et modélisation prédictive pour la priorisation budgétaire et la planification stratégique.</li>
+              <li>Amélioration de l'allocation des ressources via des frameworks structurés d'optimisation de portefeuille.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- =========================================================
          SECTION 5 — EDUCATION & CERTIFICATIONS
     ========================================================== -->
-    <section id="education" class="section">
-      <!-- Contenu ajouté à l'étape 6 -->
+    <section id="education" class="section education-section">
+      <div class="section-header">
+        <span class="section-number">04.</span>
+        <h2 class="section-title">Formation & Certifications</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="education-grid">
+        <!-- Formation académique -->
+        <div class="edu-block">
+          <h3 class="edu-block-title">🎓 Parcours académique</h3>
+          <div class="edu-item">
+            <div class="edu-year">2022 – 2024</div>
+            <div class="edu-detail">
+              <h4>Master en Recherche Opérationnelle</h4>
+              <p>Université des Sciences et de la Technologie Houari Boumediene (USTHB), Alger</p>
+            </div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-year">2019 – 2022</div>
+            <div class="edu-detail">
+              <h4>Licence en Mathématiques – Recherche Opérationnelle</h4>
+              <p>Université des Sciences et de la Technologie Houari Boumediene (USTHB), Alger</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Certifications -->
+        <div class="edu-block">
+          <h3 class="edu-block-title">📜 Certifications SAP</h3>
+          <div class="cert-list">
+            <div class="cert-item">
+              <span class="cert-badge">2025</span>
+              <span>SAP Certified Associate – Business Process Integration with SAP S/4HANA</span>
+            </div>
+            <div class="cert-item">
+              <span class="cert-badge">2025</span>
+              <span>SAP Certified Specialist – SAP S/4HANA Cloud Private Edition</span>
+            </div>
+            <div class="cert-item">
+              <span class="cert-badge">2026</span>
+              <span>SAP Certified – Data Analyst – SAP Analytics Cloud</span>
+            </div>
+            <div class="cert-item">
+              <span class="cert-badge">2026</span>
+              <span>SAP Certified – Implementation Consultant – End-to-End Business Processes</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Langues -->
+        <div class="edu-block">
+          <h3 class="edu-block-title">🌐 Langues</h3>
+          <div class="lang-list">
+            <div class="lang-item">
+              <span class="lang-name">Arabe</span>
+              <span class="lang-level">Natif</span>
+            </div>
+            <div class="lang-item">
+              <span class="lang-name">Français</span>
+              <span class="lang-level">Courant</span>
+            </div>
+            <div class="lang-item">
+              <span class="lang-name">Anglais</span>
+              <span class="lang-level">Courant</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- =========================================================
          SECTION 6 — PROJECTS
     ========================================================== -->
-    <section id="projects" class="section">
-      <!-- Contenu ajouté à l'étape 7 -->
+    <section id="projects" class="section projects-section">
+      <div class="section-header">
+        <span class="section-number">05.</span>
+        <h2 class="section-title">Projets</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="projects-grid">
+        <!-- Projet 1 -->
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon">📋</div>
+            <div class="project-links">
+              <span class="project-tag">ASP.NET MVC</span>
+            </div>
+          </div>
+          <h3 class="project-title">Leave Request System</h3>
+          <p class="project-desc">Application full-stack de gestion des congés avec workflow automatisé et contrôle d'accès basé sur les rôles (RBAC).</p>
+          <ul class="project-points">
+            <li>Réduction du temps de traitement manuel via routage automatique</li>
+            <li>Authentification multi-niveaux avec RBAC</li>
+            <li>Interface Bootstrap 5 connectée à SQL Server via C#</li>
+          </ul>
+          <p class="project-date">Oct 2025 – Avr 2026</p>
+        </div>
+
+        <!-- Projet 2 -->
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon">📁</div>
+            <div class="project-links">
+              <span class="project-tag">Full Stack</span>
+            </div>
+          </div>
+          <h3 class="project-title">Electronic Document Management System (EDMS)</h3>
+          <p class="project-desc">Système centralisé de gestion documentaire pour archives d'entreprise avec stockage structuré et sécurisé.</p>
+          <ul class="project-points">
+            <li>Centralisation des archives dans un système digital sécurisé</li>
+            <li>Réduction des risques de perte de données</li>
+            <li>Plateforme scalable de gestion documentaire</li>
+          </ul>
+          <p class="project-date">Nov 2025 – Fév 2026</p>
+        </div>
+
+        <!-- Projet 3 -->
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon">📊</div>
+            <div class="project-links">
+              <span class="project-tag">Power BI</span>
+              <span class="project-tag">SQL Server</span>
+            </div>
+          </div>
+          <h3 class="project-title">CEO Procurement Dashboard</h3>
+          <p class="project-desc">Tableau de bord exécutif pour la visibilité en temps réel sur les statuts de projets, KPI et échéances critiques.</p>
+          <ul class="project-points">
+            <li>Visibilité en temps réel pour la direction</li>
+            <li>Intégration de données multi-unités business</li>
+            <li>Aide à la décision stratégique</li>
+          </ul>
+          <p class="project-date">Jan 2026 – Mar 2026</p>
+        </div>
+
+        <!-- Projet 4 -->
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon">🛒</div>
+            <div class="project-links">
+              <span class="project-tag">Desktop App</span>
+            </div>
+          </div>
+          <h3 class="project-title">Purchase Order Management</h3>
+          <p class="project-desc">Application desktop de gestion des commandes d'achat avec liaison aux contrats fournisseurs et automatisation des workflows.</p>
+          <ul class="project-points">
+            <li>Suivi amélioré des commandes d'achat</li>
+            <li>Réduction des erreurs de traitement</li>
+            <li>Workflow d'automatisation lié aux contrats</li>
+          </ul>
+          <p class="project-date">Déc 2025 – Jan 2026</p>
+        </div>
+
+        <!-- Projet 5 -->
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon">🎨</div>
+            <div class="project-links">
+              <span class="project-tag">UI/UX</span>
+            </div>
+          </div>
+          <h3 class="project-title">UI Redesign – Contracts Management</h3>
+          <p class="project-desc">Refonte complète de l'interface utilisateur de l'application de gestion des contrats fournisseurs.</p>
+          <ul class="project-points">
+            <li>Amélioration de l'expérience utilisateur</li>
+            <li>Simplification des workflows</li>
+            <li>Réduction du temps de completion des tâches</li>
+          </ul>
+          <p class="project-date">Fév 2026</p>
+        </div>
+      </div>
     </section>
 
     <!-- =========================================================
-         SECTION 7 — TIMELINE
+         SECTION 7 — CONTACT
     ========================================================== -->
-    <section id="timeline" class="section">
-      <!-- Contenu ajouté à l'étape 8 -->
-    </section>
-
-    <!-- =========================================================
-         SECTION 8 — CONTACT
-    ========================================================== -->
-    <section id="contact" class="section">
-      <!-- Contenu ajouté à l'étape 9 -->
+    <section id="contact" class="section contact-section">
+      <div class="section-header">
+        <span class="section-number">06.</span>
+        <h2 class="section-title">Contact</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3 class="contact-heading">Discutons de votre projet</h3>
+          <p class="contact-text">
+            Que vous ayez besoin d'un <strong>développeur .NET</strong> pour votre application métier, d'un <strong>consultant SAP PS/PPM</strong> pour votre transformation S/4HANA, ou d'un profil hybride capable de faire le pont entre la technique et le fonctionnel, je suis à votre écoute.
+          </p>
+          <div class="contact-links">
+            <a href="mailto:abdelmalek.lazli@gmail.com" class="contact-link-item">
+              <span class="contact-link-icon">✉️</span>
+              <span>abdelmalek.lazli@gmail.com</span>
+            </a>
+            <a href="tel:+213540977919" class="contact-link-item">
+              <span class="contact-link-icon">📞</span>
+              <span>+213 540 977 919</span>
+            </a>
+            <a href="https://linkedin.com/in/abdelmalek-lazli-18b5321b0" target="_blank" rel="noopener noreferrer" class="contact-link-item">
+              <span class="contact-link-icon">🔗</span>
+              <span>linkedin.com/in/abdelmalek-lazli</span>
+            </a>
+            <div class="contact-link-item">
+              <span class="contact-link-icon">📍</span>
+              <span>Alger, Algérie</span>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form" id="contact-form" action="#" method="POST">
+          <div class="form-group">
+            <label for="name" class="form-label">Nom</label>
+            <input type="text" id="name" name="name" class="form-input" placeholder="Votre nom" required />
+          </div>
+          <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" id="email" name="email" class="form-input" placeholder="votre@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="subject" class="form-label">Sujet</label>
+            <input type="text" id="subject" name="subject" class="form-input" placeholder="Sujet de votre message" required />
+          </div>
+          <div class="form-group">
+            <label for="message" class="form-label">Message</label>
+            <textarea id="message" name="message" class="form-input form-textarea" rows="5" placeholder="Votre message..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">
+            Envoyer le message <span class="chevron">→</span>
+          </button>
+        </form>
+      </div>
     </section>
 
   </main>
@@ -103,7 +587,16 @@
        FOOTER
   ========================================================== -->
   <footer id="main-footer">
-    <!-- Contenu ajouté à l'étape 9 -->
+    <div class="footer-content">
+      <p class="footer-text">
+        Conçu & développé par <strong>Abdelmalek Lazli</strong> — © <span id="current-year"></span>
+      </p>
+      <div class="footer-links">
+        <a href="mailto:abdelmalek.lazli@gmail.com" aria-label="Email">✉️</a>
+        <a href="https://linkedin.com/in/abdelmalek-lazli-18b5321b0" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">🔗</a>
+        <a href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="GitHub">💻</a>
+      </div>
+    </div>
   </footer>
 
   <!-- ===== Script principal (chargé en fin de body pour la performance) ===== -->
